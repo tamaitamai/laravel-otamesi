@@ -13,7 +13,7 @@
             <input type="text" class="search-box">
             <a href="{{ route('item.list') }}">商品一覧</a>
             <a href="{{ route('cart.index') }}">🛒</a>
-            <a href="">🕐</a>
+            <a href="{{ route('history.list') }}">🕐</a>
         </div>
         @if(session()->has('user'))
         <div class="login-box">

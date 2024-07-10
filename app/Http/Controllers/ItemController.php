@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
-    public function otamesi(){
-        $items = Item::All();
-        $item = Item::findOrFail(1);
-        Log::debug($item->name);
-        return view('hello',['items'=>$items]);
-    }
-
     public function list(){
         $items = Item::All();
         return view('item.list',['items'=>$items]);

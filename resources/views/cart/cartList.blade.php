@@ -36,13 +36,14 @@
         </div>
         @endforeach
     </div>
-    <div class="cart-price-box">
+    <form class="cart-price-box" action="{{ route('cart.payment') }}" method="POST">
+        @csrf
         <div class="cart-total-title">小計({{ $totalCount }}個の商品)</div>
         <div class="cart-total-price">￥{{ $totalPrice }}</div>
         <div class="cart-buy-btn-area">
             <button class="cart-buy-btn">購入確定</button>
         </div>
-    </div>
+    </form>
 </div>
 <script src="/js/cart.js"></script>
 @endsection

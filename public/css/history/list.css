@@ -1,0 +1,46 @@
+.history-area{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.history-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid rgb(180, 175, 175);
+    border-radius: 10px;
+    width: 80%;
+}
+/* 履歴上側 */
+.history-top-box{
+    display: flex;
+    padding: 10px 0px;
+    background-color: rgb(242, 237, 237);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.history-top-left-box{
+    margin-left: 30px;
+}
+.history-bottom-right-box{
+    margin-left: 30px;
+}
+.history-name{
+    margin: 10px 0px 0px 20px;
+}
+/* 履歴下側 */
+.history-bottom-box{
+    display: flex;
+    justify-content: space-between;
+}
+.history-bottom-left-box{
+    display: flex;
+}
+.history-bottom-right-box{
+    margin: 10px 20px 0px 0px;
+}
+.history-image{
+    width: 200px;
+    height: 120px;
+    padding: 10px;
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,8 @@ Route::post('/reviewEdit',[ReviewController::class,'reviewEdit'])->name('review.
 Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cart/update/{cart}',[CartController::class,'update'])->name('cart.update');
+Route::post('/cart/payment',[CartController::class,'payment'])->name('cart.payment');
+Route::get('/cart/buy',function(){return view('cart.payment');});
 
 // ログイン
 Route::get('/toLogin',function(){return view('user.login');})->name('user.toLogin');
@@ -34,3 +37,6 @@ Route::get('/toInsert',function(){return view('user.insert');})->name('user.toIn
 Route::post('/login',[UserController::class,'login'])->name('user.login');
 Route::post('/insert',[UserController::class,'insert'])->name('user.insert');
 Route::get('/logOut',[UserController::class,'logOut'])->name('user.logOut');
+
+//商品購入履歴
+Route::get('history/list',[HistoryController::class,'list'])->name('history.list');
