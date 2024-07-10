@@ -1,0 +1,16 @@
+.item-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+}
+.item-image{
+    width: 80%;
+    height: 80%;
+}
