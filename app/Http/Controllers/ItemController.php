@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Log;
 class ItemController extends Controller
 {
     public function list(){
-        $items = Item::All();
-        return view('item.list',['items'=>$items]);
+        // $items = Item::All();
+        $reviews = Review::All();
+        // $items = Item::leftJoin('reviews', 'items.id', '=', 'reviews.item_id')
+        // ->select('items.*', 'reviews.star')
+        // ->orderBy('items.id')     
+        // ->get();
+        $items = Item::with('reviews')->orderBy('id')->get();
+        return view('item.list',['items'=>$items,'reviews'=>$reviews]);
     }
 
     public function detail(String $id){

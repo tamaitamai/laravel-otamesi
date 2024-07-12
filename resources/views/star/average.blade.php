@@ -60,8 +60,9 @@ if($widthRange >= 0.5){
             @for($i=1;$i<=$afterValue;$i++)
             <span class="after-star">★</span>
             @endfor    
+            <div>{{ $averageValue }}</div>
         </div>
-        <div>{{ $averageValue }}</div>
+
     </div>
     {{-- レビュー評価の一覧を表示 --}}
     @if($exists)
@@ -81,6 +82,11 @@ if($widthRange >= 0.5){
 /* レビュー評価平均 */
 .average-star-area{
     display: flex;
+    width: 100%;
+}
+.avarage-star-box{
+    display: flex;
+    width: 100%;
 }
 .before-star{
     color: orange;

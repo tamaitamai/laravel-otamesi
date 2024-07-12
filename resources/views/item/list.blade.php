@@ -9,6 +9,8 @@
         <img src="{{ asset('/storage/image/'.$item->image) }}" class="item-image">    
     </div>
     <a href="{{ route('item.detail',['item' => $item->id]) }}">{{ $item->name }}</a>
+    @include('star.average',['exists'=>false,'reviews'=>$item->reviews])
+    
     <select name="count" class="item-count">
         @for($i=1; $i<=10; $i++)
         <option value="{{ $i }}">{{ $i }}</option>
