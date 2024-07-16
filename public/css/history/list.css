@@ -29,6 +29,9 @@
     margin: 10px 0px 0px 20px;
 }
 /* 履歴下側 */
+.history-top-right-box{
+    margin-left: 20px;
+}
 .history-bottom-box{
     display: flex;
     justify-content: space-between;

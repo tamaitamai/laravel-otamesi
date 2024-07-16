@@ -1,16 +1,68 @@
+.item-area{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+}
+.item-box{
+    display: flex;
+    width: 80%;
+}
 .item-image{
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
+}
+.item-info-box{
+    margin-left: 50px;
+}
+.item-price{
+    font-size: 30px;
+}
+.price-box{
+    border: 1px solid rgb(180, 175, 175);
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.price-btn-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: auto;
+}
+.item-count{
+    margin-right: 20px;
+    padding: 2px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: rgb(242, 237, 237);
+    margin: 10px 0px;
+    width: 90%;
+}
+.price-btn{
+    width: 90%;
+    border-radius: 50px;
+    font-size: 20px;
+    margin: 10px 0px;
+    background-color: orange;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
+}
+.price-btn:hover{
+    opacity: 0.7;
+}
+/* レビューの一覧 */
+.review-area{
+    display: flex;
 }
 .review-list,.review-box{
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    width: 100%;
+    margin-left: 100px;
 }
 /* レビューの表示 */
 .review-box{
-    border: 1px solid black;
     width: 30%;
     border-radius: 10px;    
     margin: 10px 0px;

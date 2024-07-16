@@ -66,14 +66,14 @@ if($widthRange >= 0.5){
     </div>
     {{-- レビュー評価の一覧を表示 --}}
     @if($exists)
+    <div>{{ $totalCount }}個のレビュー</div>
     @for ($i=1;$i<=5;$i++)
     <div class="review-star-box">
         <div class="review-rank">{{ $i }}</div>
         <div class="review-star-border" style="background-image: {{ $map[$i]['border'] }}"></div>
         <div class="review-count">{{ $map[$i]['count'] }}</div>
     </div>   
-    @endfor
-    <div>{{ $totalCount }}個のレビュー</div>
+    @endfor    
     @endif
 </div>
 </body>
@@ -87,6 +87,7 @@ if($widthRange >= 0.5){
 .avarage-star-box{
     display: flex;
     width: 100%;
+    font-size: 20px;
 }
 .before-star{
     color: orange;
@@ -111,21 +112,22 @@ if($widthRange >= 0.5){
 }
 /* レビュー評価一覧 */
 .review-star-area{
-    width: 25%;
+    /* width: 25%; */
 }
 .review-star-box{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    width: 300px;
 }
 .review-rank{
     margin-right: 20px;    
 }
 .review-star-border{
     border: 1px solid rgb(180, 175, 175);
-    height: 30px;
-    width: 60%;
-    border-radius: 10px;
+    height: 20px;
+    width: 80%;
+    border-radius: 5px;
     /* background-image: linear-gradient(to right, rgb(220, 28, 28) 50%, transparent 50%); */
 }
 .review-count{
