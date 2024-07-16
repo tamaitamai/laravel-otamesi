@@ -15,13 +15,21 @@
     <div class="review-box">
         <div class="review-name">{{ $review->name }}さん</div>
         <div class="review-comment">{{ $review->comment }}</div>
-        @for ($i=1; $i<=5; $i++)
-            @if($i <= $review->star)
-            <span style="font-size: 20px; color: orange;">★</span>
-            @else
-            <span style="font-size: 20px;">☆</span>
-            @endif
-        @endfor
+        <div>
+            @for ($i=1; $i<=5; $i++)
+                @if($i <= $review->star)
+                <span style="font-size: 20px; color: orange;">★</span>
+                @else
+                <span style="font-size: 20px;">☆</span>
+                @endif
+            @endfor
+        </div>
+        @if ($review->rgUserId === session('user')[0]->id)
+        <button class="review-good" value="{{ $review->id }}" style="border: 1px solid red">役に立った</button>
+        @else
+        <button class="review-good" value="{{ $review->id }}">役に立った</button>
+        @endif
+        <div><span class="review-total-count">{{ $review->totalCount }}</span>人が役にたったと言っています</div>
     </div>
     @endforeach
 </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('item_id');
             $table->integer('star');
+            $table->integer('good');
             $table->timestamps();
         });
     }

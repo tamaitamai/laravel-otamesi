@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function(){return view('home');})->name('home');
 Route::get('/hello', [ItemController::class, 'otamesi']);
 
-// アイテムs
+// アイテム
 Route::get('/item/list', [ItemController::class, 'list'])->name('item.list');
 Route::get('/item/detail/{item}',[ItemController::class,'detail'])->name('item.detail');
 Route::get('/item/add/{item}',[ItemController::class,'itemAdd'])->name('item.add');
@@ -23,6 +23,7 @@ Route::get('/item/add/{item}',[ItemController::class,'itemAdd'])->name('item.add
 Route::get('/review/{itemId}',[ReviewController::class,'review'])->name('review');
 Route::post('/reviewAdd',[ReviewController::class,'reviewAdd'])->name('review.add');
 Route::post('/reviewEdit',[ReviewController::class,'reviewEdit'])->name('review.edit');
+Route::get('/reviewGood',[ReviewController::class,'reviewGood'])->name('review.good');
 
 // カート
 Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');

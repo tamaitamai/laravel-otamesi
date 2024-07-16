@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Review;
+use App\Models\ReviewGood;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\ErrorHandler\Debug;
@@ -45,5 +46,23 @@ class ReviewController extends Controller
             'star' => $request->star,
         ]);
         return to_route('item.detail',['item'=>$request->item_id]);
+    }
+
+    public function reviewGood(Request $request){
+        $user = session('user');
+        $review = Review::findOrFail($request->id);
+        $reviewGoodExists = ReviewGood::where('user_id',$user[0]->id)->where('review_id',$review->id)->exists();
+        if(!$reviewGoodExists){
+            $reviewGood = new ReviewGood();
+            $reviewGood->user_id = $user[0]->id;
+            $reviewGood->review_id = $review->id;
+            $reviewGood->save();
+            $review->update([
+                'good' => $review->good + 1,
+            ]);
+        }else{
+            $reviewGood = ReviewGood::where('user_id',$user[0]->id)->where('review_id',$review->id)->get();
+            $reviewGood[0]->delete();
+        }
     }
 }
