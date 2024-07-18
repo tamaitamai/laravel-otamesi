@@ -31,12 +31,14 @@ Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cart/update/{cart}',[CartController::class,'update'])->name('cart.update');
 
-// ログイン
+// ユーザー
 Route::get('/toLogin',function(){return view('user.login');})->name('user.toLogin');
 Route::get('/toInsert',function(){return view('user.insert');})->name('user.toInsert');
 Route::post('/login',[UserController::class,'login'])->name('user.login');
 Route::post('/insert',[UserController::class,'insert'])->name('user.insert');
 Route::get('/logOut',[UserController::class,'logOut'])->name('user.logOut');
+Route::get('/user/toEdit',function(){return view('user.edit');})->name('user.toEdit');
+Route::post('/user/edit',[UserController::class,'edit'])->name('user.edit');
 
 //商品購入履歴
 Route::get('history/list',[HistoryController::class,'list'])->name('history.list');

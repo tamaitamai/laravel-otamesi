@@ -17,7 +17,7 @@
         </div>
         @if(session()->has('user'))
         <div class="login-box">
-            <div>{{ session('user')[0]->name }}さんこんにちは</div>
+            <a href="{{ Route('user.toEdit') }}" class="user-name">{{ session('user')[0]->name }}さんこんにちは</a>
             <a href="{{ Route('user.logOut') }}">ログアウト</a>
         </div>
         @else
@@ -53,5 +53,11 @@ header{
     flex-direction: column;
     padding: 20px;
 }
-
+.user-name{
+    color: black;
+    text-decoration: none;
+}
+.user-name:hover{
+    color: blue;
+}
 </style>

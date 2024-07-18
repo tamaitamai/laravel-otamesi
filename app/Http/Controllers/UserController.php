@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -27,5 +28,18 @@ class UserController extends Controller
         // session()->flush();
         session()->forget('user');
         return to_route('user.toLogin');
+    }
+
+    public function edit(Request $request){
+        $user = session('user');
+        $user[0]->update([
+            'name' => $request->name,
+            'mail' => $request->mail,
+            'password' => $request->password,
+            'address' => $request->address
+        ]);
+        $updateUser = User::where('mail',$request->mail)->where('password',$request->password)->get();
+        session(['user'=>$updateUser]);
+        return to_route('item.list');
     }
 }

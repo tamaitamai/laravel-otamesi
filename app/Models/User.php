@@ -13,16 +13,12 @@ class User extends Authenticatable
     use HasFactory;
     public $timestamps = false;
 
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array<int, string>
-    //  */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    protected $fillable = [
+        'name',
+        'mail',
+        'password',
+        'address',
+    ];
 
     // /**
     //  * The attributes that should be hidden for serialization.
