@@ -13,7 +13,7 @@ class HistoryController extends Controller
         if($user==null){
             return view('user.login');
         }
-        $historys = History::where('user_id',$user[0]->id)->get();
+        $historys = History::where('user_id',$user[0]->id)->orderBy('id','desc')->get();
         return view('history.list',['historys'=>$historys]);
     }
 }

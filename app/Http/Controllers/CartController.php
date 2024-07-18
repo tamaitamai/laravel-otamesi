@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\History;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\ErrorHandler\Debug;
@@ -24,6 +25,7 @@ class CartController extends Controller
             $totalPrice+=$cart->price*$cart->count;
             $totalCount+=$cart->count;
         }
+        session(['totalPrice'=>$totalPrice,'totalCount'=>$totalCount]);
         return view('cart.cartList',['carts' => $carts
                                     ,'totalPrice'=>$totalPrice
                                     ,'totalCount'=>$totalCount]);
@@ -47,21 +49,4 @@ class CartController extends Controller
         return to_route('cart.index');
     }
 
-    // カートの商品を購入
-    public function payment(){
-        $user = session('user');
-        $carts = Cart::where('user_id',$user[0]->id)->get();
-        foreach($carts as $cart){
-            $history = new History();
-            $history->user_id = $user[0]->id;
-            $history->item_id = $cart->item_id;
-            $history->name = $cart->name;
-            $history->image = $cart->image;
-            $history->price = $cart->price;
-            $history->count = $cart->count;
-            $history->save();
-            $cart->delete();
-        }
-        return view('cart.payment');
-    }
 }

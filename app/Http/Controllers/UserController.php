@@ -18,6 +18,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->mail = $request->mail;
         $user->password = $request->password;
+        $user->address = $request->address;
         $user->save();
         return view('user.login');
     }    

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -29,8 +30,6 @@ Route::get('/reviewGood',[ReviewController::class,'reviewGood'])->name('review.g
 Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cart/update/{cart}',[CartController::class,'update'])->name('cart.update');
-Route::post('/cart/payment',[CartController::class,'payment'])->name('cart.payment');
-Route::get('/cart/buy',function(){return view('cart.payment');});
 
 // ログイン
 Route::get('/toLogin',function(){return view('user.login');})->name('user.toLogin');
@@ -41,3 +40,8 @@ Route::get('/logOut',[UserController::class,'logOut'])->name('user.logOut');
 
 //商品購入履歴
 Route::get('history/list',[HistoryController::class,'list'])->name('history.list');
+
+// 注文
+Route::get('order/confirm',[OrderController::class,'confirm'])->name('order.confirm');
+Route::post('/order/payment',[OrderController::class,'payment'])->name('order.payment');
+Route::get('/order/buy',function(){return view('order.payment');});

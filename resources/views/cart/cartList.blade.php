@@ -4,7 +4,6 @@
 @section('content')
 <div class="cart-area">
     <div class="cart-list">
-        <h1>カートの中身</h1>
         @foreach ($carts as $cart)
         <div class="cart-box">            
             <img src="{{ asset('/storage/image/'.$cart->image) }}" class="cart-image">
@@ -36,12 +35,21 @@
         </div>
         @endforeach
     </div>
-    <form class="cart-price-box" action="{{ route('cart.payment') }}" method="POST">
+    {{-- <form class="cart-price-box" action="{{ route('order.payment') }}" method="POST">
         @csrf
         <div class="cart-total-title">小計({{ $totalCount }}個の商品)</div>
         <div class="cart-total-price">￥{{ $totalPrice }}</div>
         <div class="cart-buy-btn-area">
             <button class="cart-buy-btn">購入確定</button>
+            <a href="{{ route('order.confirm') }}">注文確認</a>
+        </div>
+    </form> --}}
+    <form class="cart-price-box" action="{{ route('order.confirm') }}">
+        <div class="cart-total-title">小計({{ $totalCount }}個の商品)</div>
+        <div class="cart-total-price">￥{{ $totalPrice }}</div>
+        <div class="cart-buy-btn-area">
+            <button class="cart-buy-btn">注文確認</button>
+            {{-- <a href="{{ route('order.confirm') }}">注文確認</a> --}}
         </div>
     </form>
 </div>

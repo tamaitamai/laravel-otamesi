@@ -1,0 +1,88 @@
+.order-area{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.order-box{
+    width: 50%;
+    margin-right: 50px;
+}
+/* 送り先住所 */
+.address-box{
+    border: 1px solid rgb(180, 175, 175);
+    padding: 20px;
+}
+/* カート一覧 */
+.cart-list{
+    margin-top: 50px;
+}
+.cart-box{
+    border: 1px solid rgb(180, 175, 175);
+    display: flex;
+    margin-bottom: 20px;
+}
+.delivery-date{
+    padding: 10px;
+    border: 1px solid rgb(180, 175, 175);
+    border-bottom: 0px;
+}
+.cart-info-area{
+    display: flex;
+    background-color: rgb(242, 237, 237);
+    padding: 10px;
+}
+.cart-info-box{
+    margin-left: 20px;
+}
+.cart-image{
+    width: 200px;
+    height: 120px;
+}
+.cart-date-box{    
+    padding: 20px;
+}
+/* 価格情報 */
+.cart-price-box{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(180, 175, 175);
+    width: 15%;
+    height: 200px;
+    padding: 50px;
+}
+.cart-buy-btn-area{
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+.cart-buy-btn{
+    width: 100%;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 0px;
+    background-color: orange;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);    
+}
+/* 日付選択モーダル */
+.select-date-area{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.select-date-box{
+    background-color: white;
+    border: 1px solid black;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

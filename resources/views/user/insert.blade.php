@@ -13,7 +13,10 @@
         <br>
         <label for="password">パスワード：</label>
         <input type="text" id="password" name="password">
-        <button class="user-btn">ログイン</button>
+        <br>
+        <label for="address">住所：</label>        
+        <input type="text" id="address" name="address">
+        <button class="user-btn">新規登録</button>
     </form>
 </div>
 @endsection
