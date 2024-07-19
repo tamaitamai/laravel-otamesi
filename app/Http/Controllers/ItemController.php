@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
+    // アイテムの一覧を表示
     public function list(){
-        // $items = Item::All();
         $reviews = Review::All();
         // $items = Item::leftJoin('reviews', 'items.id', '=', 'reviews.item_id')
         // ->select('items.*', 'reviews.star')
@@ -22,6 +22,7 @@ class ItemController extends Controller
         return view('item.list',['items'=>$items,'reviews'=>$reviews]);
     }
 
+    // アイテムの詳細を表示
     public function detail(String $id){
         $item = Item::findOrFail($id);
         // $reviews = Review::where('item_id',$id)->orderBy('id','desc')->get();
@@ -45,6 +46,7 @@ class ItemController extends Controller
         return view('item.detail',['item'=>$item,'reviews'=>$reviews]);
     }
 
+    // アイテムをカートに加える
     public function itemAdd(String $id, Request $request){
         $user = session('user');
         if($user == null){
@@ -60,5 +62,34 @@ class ItemController extends Controller
         $cart->count=$request->count;
         $cart->save();
         return to_route('item.list');
+    }
+
+    // ジャンル用にアイテム一覧を確保
+    public function genreList(){
+        $itemsByGenre = Item::All();
+        $genreList = [];
+        foreach($itemsByGenre as $item){
+            $genreList[$item->genre] = $item->genre;
+        }
+        session(['genreList' => $genreList]);
+    }
+
+    // アイテムを検索する
+    public function itemSearch(Request $request){
+        $searchItems = Item::where('name', 'LIKE' ,'%'.$request->search.'%')->get();
+        session(['searchItems' => $searchItems]);
+        $redirectUrl = route('item.list');
+        return response()->json(['redirect_url' => $redirectUrl]);
+    }
+
+    public function genre(Request $request){
+        if($request->genre == 'all'){
+            $items = Item::All();
+        }else{
+            $items = Item::where('genre',$request->genre)->get();
+        }
+        session(['searchItems' => $items,'genre' => $request->genre]);
+        $redirectUrl = route('item.list');
+        return response()->json(['redirect_url' => $redirectUrl]);
     }
 }

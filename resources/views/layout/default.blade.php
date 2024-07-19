@@ -4,60 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <header>
         <div class="home-box">
-            <a href="{{ route('home') }}">ホーム</a>
-            <input type="text" class="search-box">
-            <a href="{{ route('item.list') }}">商品一覧</a>
-            <a href="{{ route('cart.index') }}">🛒</a>
-            <a href="{{ route('history.list') }}">🕐</a>
+            <a class="home-click" href="{{ route('home') }}">ホーム</a>
+            <div class="search-box">
+                <input type="text" class="search-input"><span class="search-icon">🔍</span>
+            </div>
+            <select class="genre-box">
+                <option value="all">すべて</option>
+                @foreach (session('genreList') as $key => $genre)    
+                @if (session('genre') == $genre)
+                <option value="{{ $genre }}" selected>{{ $genre }}</option>
+                @else
+                <option value="{{ $genre }}">{{ $genre }}</option> 
+                @endif            
+                @endforeach
+            </select>
+            <a class="home-click" href="{{ route('item.list') }}">商品一覧</a>
+            <a class="home-click" href="{{ route('cart.index') }}">🛒</a>
+            <a class="home-click" href="{{ route('history.list') }}">🕐</a>
         </div>
+        {{-- ユーザー情報 --}}
         @if(session()->has('user'))
         <div class="login-box">
-            <a href="{{ Route('user.toEdit') }}" class="user-name">{{ session('user')[0]->name }}さんこんにちは</a>
-            <a href="{{ Route('user.logOut') }}">ログアウト</a>
+            <a href="{{ Route('user.toEdit') }}" class="home-click">{{ session('user')[0]->name }}さんこんにちは</a>
+            <a href="{{ Route('user.logOut') }}" class="home-click">ログアウト</a>
         </div>
         @else
         <div class="login-box">
-            <a href="{{ Route('user.toLogin') }}">ログイン</a>
-            <a href="{{ Route('user.toInsert') }}">新規登録</a>    
+            <a href="{{ Route('user.toLogin') }}" class="home-click">ログイン</a>
+            <a href="{{ Route('user.toInsert') }}" class="home-click">新規登録</a>    
         </div>    
         @endif
     </header>
     <main>
         @yield('content')
     </main>
+    <script src="/js/home.js"></script>
 </body>
 </html>
-<style>
-header{
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-}
-.home-box{
-    
-}
-.search-box{
-    font-size: 20px;
-}
-.login-box{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-.user-name{
-    color: black;
-    text-decoration: none;
-}
-.user-name:hover{
-    color: blue;
-}
-</style>

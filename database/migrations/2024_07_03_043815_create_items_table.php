@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('comment');
             $table->text('image');
-            $table->integer('price');            
+            $table->integer('price');
+            $table->text('genre');
             $table->timestamps();
         });
     }

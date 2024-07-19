@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="/css/item/list.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @section('content')
+@php
+    if(session()->has('searchItems')){
+        $items = session('searchItems');
+    }
+@endphp
 <div class="item-list">
 @foreach ($items as $item)
 <form action="{{ route('item.add',['item'=>$item->id]) }}" class="item-box">

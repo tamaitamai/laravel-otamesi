@@ -19,6 +19,9 @@ Route::get('/hello', [ItemController::class, 'otamesi']);
 Route::get('/item/list', [ItemController::class, 'list'])->name('item.list');
 Route::get('/item/detail/{item}',[ItemController::class,'detail'])->name('item.detail');
 Route::get('/item/add/{item}',[ItemController::class,'itemAdd'])->name('item.add');
+Route::get('/item/search',[ItemController::class,'itemSearch'])->name('item.search');
+Route::get('/item/genreList',[ItemController::class,'genreList'])->name('item.genreList');
+Route::get('/item/genre',[ItemController::class,'genre'])->name('item.genre');
 
 // レビュー
 Route::get('/review/{itemId}',[ReviewController::class,'review'])->name('review');

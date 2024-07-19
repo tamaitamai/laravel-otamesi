@@ -1,11 +1,32 @@
 $(function(){
-    $('h1').click(function(){
-        // const number = $('h1').index($(this));
-        // console.log(number);
-        if($(this).css('color')=='rgb(0, 0, 255)'){
-            $(this).css('color','red');
-        }else{
-            $(this).css('color','blue');
+    $.ajax({
+        url: '/item/genreList'
+    })
+
+    $('.genre-box').change(function(){
+        postData = {
+            genre: $(this).val()
         }
+        $.ajax({
+            url: '/item/genre',
+            data: postData,
+            success: function(response){
+                window.location.href = response.redirect_url;
+            }
+        })
+    })
+
+    $('.search-icon').click(function(){
+        var searchValue = $('.search-input').val();
+        const postData = {
+            search: searchValue
+        }
+        $.ajax({
+            url: '/item/search',
+            data: postData,
+            success: function(response){
+                window.location.href = response.redirect_url;
+            }
+        })
     })
 })
