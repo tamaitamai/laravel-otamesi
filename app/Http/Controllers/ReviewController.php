@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewRequest;
 use App\Models\Item;
 use App\Models\Review;
 use App\Models\ReviewGood;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\ErrorHandler\Debug;
 
 class ReviewController extends Controller
 {
+    // レビューの一覧の表示
     public function review(String $id){
         $user = session('user');
         $reviewExists = Review::where('user_id',$user[0]->id)->where('item_Id',$id)->exists();
@@ -24,7 +25,8 @@ class ReviewController extends Controller
         return view('user.login');
     }
 
-    public function reviewAdd(Request $request){
+    // 新規レビューの投稿
+    public function reviewAdd(ReviewRequest $request){
         $user = session('user');
         $review = new Review();
         $review->name = $request->name;
@@ -37,7 +39,8 @@ class ReviewController extends Controller
         return to_route('item.detail',['item'=>$item->id]);
     }
 
-    public function reviewEdit(Request $request){
+    // レビューの編集
+    public function reviewEdit(ReviewRequest $request){
         $user = session('user');
         $review = Review::where('user_id',$user[0]->id)->where('item_Id',$request->item_id)->first();
         $review->update([
@@ -48,6 +51,7 @@ class ReviewController extends Controller
         return to_route('item.detail',['item'=>$request->item_id]);
     }
 
+    // レビューにいいねをする
     public function reviewGood(Request $request){
         $user = session('user');
         $review = Review::findOrFail($request->id);
@@ -57,9 +61,6 @@ class ReviewController extends Controller
             $reviewGood->user_id = $user[0]->id;
             $reviewGood->review_id = $review->id;
             $reviewGood->save();
-            $review->update([
-                'good' => $review->good + 1,
-            ]);
         }else{
             $reviewGood = ReviewGood::where('user_id',$user[0]->id)->where('review_id',$review->id)->get();
             $reviewGood[0]->delete();

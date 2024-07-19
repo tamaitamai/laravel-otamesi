@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InsertUserRequest;
+use App\Http\Requests\LoginUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function login(Request $request){
+    public function login(LoginUserRequest $request){
         $user = User::where('mail',$request->mail)->where('password',$request->password)->get();
+        Log::debug($user);
         session(['user' => $user]);
         return to_route('item.list');
     }
 
-    public function insert(Request $request){
+    public function insert(InsertUserRequest $request){
         $user = new User();
         $user->name = $request->name;
         $user->mail = $request->mail;

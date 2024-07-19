@@ -21,8 +21,16 @@ if($review != '[]'){
     @csrf
     <div class="review-box">
         <h1>レビュー{{ $edit }}</h1>
-        名前：<input type="text" name="name" value={{ $name }}>
-        コメント：<textarea name="comment">{{ $comment }}</textarea>
+        名前：<input type="text" name="name" value="{{ old('name',$name) }}">
+        @if($errors->has('name'))
+        <div style="color: red;">{{ $errors->get('name')[0] }}</div>
+        @endif
+
+        コメント：<textarea name="comment">{{ old('comment',$comment) }}</textarea>
+        @if($errors->has('comment'))
+        <div style="color: red;">{{ $errors->get('comment')[0] }}</div>
+        @endif
+
         <div>
             <span class="star">☆</span>
             <span class="star">☆</span>
@@ -30,7 +38,10 @@ if($review != '[]'){
             <span class="star">☆</span>
             <span class="star">☆</span>
         </div>
-        <input type="hidden" class="star-value" name="star" value={{ $star }}>
+        @if($errors->has('star'))
+        <div style="color: red;">{{ $errors->get('star')[0] }}</div>
+        @endif
+        <input type="hidden" class="star-value" name="star" value={{ old('star',$star) }}>
         <button name="item_id" value="{{ $itemId }}">{{ $edit }}</button>
     </div>
 </form>
