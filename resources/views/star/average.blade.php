@@ -27,8 +27,12 @@ foreach ($reviews as $review) {
 }
 // レビュー評価の合計、ボーダーの長さを計算
 foreach($map as $key=>$value){
-    $totalValue+=$value['count'] * $key;    
-    $border = $map[$key]['count']/$totalCount * 100;
+    $totalValue+=$value['count'] * $key;
+    if($totalCount == 0)  {
+        $border = 0;
+    }else{
+        $border = $map[$key]['count']/$totalCount * 100;
+    }
     $map[$key]['border'] = 'linear-gradient(to right, rgb(220, 28, 28) '.$border.'%, transparent '.$border.'%)';
 }
 // レビューの平均の表示
@@ -36,9 +40,13 @@ $beforeValue = 0;
 $lastValue = 0;
 $afterValue = 0;
 $widthRange = 0;
-$averageValue=round($totalValue/$totalCount,1);
+if($totalCount == 0){
+    $averageValue=0;
+}else{
+    $averageValue=round($totalValue/$totalCount,1);
+}
 $beforeValue = floor($averageValue);
-$lastValue = round($averageValue - $beforeValue);
+$lastValue = ceil($averageValue - $beforeValue);
 $afterValue = 5 - $beforeValue - $lastValue;
 $widthRange = $averageValue - $beforeValue;
 if($widthRange >= 0.5){
@@ -49,6 +57,7 @@ if($widthRange >= 0.5){
 ?>
 <div class="review-star-area">
     {{-- レビュー評価の平均を表示 --}}
+    @if($averageView)
     <div class="average-star-area">
         <div class="avarage-star-box">
             @for($i=1;$i<=$beforeValue;$i++)
@@ -62,8 +71,8 @@ if($widthRange >= 0.5){
             @endfor    
             <div>{{ $averageValue }}</div>
         </div>
-
     </div>
+    @endif
     {{-- レビュー評価の一覧を表示 --}}
     @if($exists)
     <div>{{ $totalCount }}個のレビュー</div>

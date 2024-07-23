@@ -1,5 +1,5 @@
 $(function(){
-    $('.item-add-area').hide();
+    // $('.item-add-area').hide();
     $('.item-box').submit(function(event){
         event.preventDefault(); // デフォルトのフォーム送信を防ぐ
 
@@ -8,7 +8,11 @@ $(function(){
             method: $(this).attr('method'),
             data: $(this).serialize(), // フォームのデータをシリアライズ
             success: function(response){
-                $('.item-add-area').show();
+                if(response.redirect_url != undefined){
+                    window.location.href = response.redirect_url;
+                }else{
+                    $('.item-add-view').show();
+                }
             },
             error: function(xhr){
                 alert('商品をカートに追加できませんでした。');
@@ -16,6 +20,6 @@ $(function(){
         });
     });
     $('.close-btn').click(function(){
-        $('.item-add-area').hide();
+        $('.item-add-view').hide();
     })
 })

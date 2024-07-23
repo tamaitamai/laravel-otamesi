@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\Log;
 class UserController extends Controller
 {
     public function login(LoginUserRequest $request){
+        Log::debug('user');
         $user = User::where('mail',$request->mail)->where('password',$request->password)->get();
-        Log::debug($user);
-        session(['user' => $user]);
+        if($user != '[]'){
+            session(['user' => $user]);
+        }else{
+            return to_route('user.toLogin')->with('noUser','そのユーザーは存在しません');
+        }
         return to_route('item.list');
     }
 
@@ -28,8 +32,8 @@ class UserController extends Controller
     }    
 
     public function logOut(){
-        // session()->flush();
-        session()->forget('user');
+        session()->flush();
+        // session()->forget('user');
         return to_route('user.toLogin');
     }
 

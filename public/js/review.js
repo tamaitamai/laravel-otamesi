@@ -29,7 +29,7 @@ $(function(){
             id: reviewId
         }
         $.ajax({
-            url: 'http://localhost/reviewGood',
+            url: '/reviewGood',
             data: postData,
             success: function(response){
             },

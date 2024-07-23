@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="/css/user.css">
 @section('content')
 <div class="user-area">
+    @if(session()->has('noUser'))
+    <div class="no-user-box">
+        <div class="no-user">{{ session('noUser') }}</div>
+    </div>
+    @endif
     <form action="{{ Route('user.login') }}" method="post" class="user-box">
         @csrf
         <h1>ログイン</h1>

@@ -14,8 +14,11 @@
         <img src="{{ asset('/storage/image/'.$item->image) }}" class="item-image">    
     </div>
     <a href="{{ route('item.detail',['item' => $item->id]) }}">{{ $item->name }}</a>
-    @include('star.average',['exists'=>false,'reviews'=>$item->reviews])
-    
+    @if($item->reviews == '[]')
+    @include('star.average',['exists'=>false,'averageView'=>false ,'reviews'=>$item->reviews])
+    @else
+    @include('star.average',['exists'=>false,'averageView'=>true ,'reviews'=>$item->reviews])
+    @endif
     <select name="count" class="item-count">
         @for($i=1; $i<=10; $i++)
         <option value="{{ $i }}">{{ $i }}</option>
@@ -26,10 +29,12 @@
 </form>
 @endforeach
 </div>
-<div class="item-add-area">
-    <div class="item-add-box">
-        <h2>カートに商品を入れました</h2>
-        <button class="close-btn">買い物を続ける</button>
+<div class="item-add-view">
+    <div class="item-add-area">
+        <div class="item-add-box">
+            <h2>カートに商品を入れました</h2>
+            <button class="close-btn">買い物を続ける</button>
+        </div>    
     </div>    
 </div>
 <script src="/js/item/list.js"></script>

@@ -17,13 +17,15 @@
             </div>
             <select class="genre-box">
                 <option value="all">すべて</option>
-                @foreach (session('genreList') as $key => $genre)    
-                @if (session('genre') == $genre)
-                <option value="{{ $genre }}" selected>{{ $genre }}</option>
-                @else
-                <option value="{{ $genre }}">{{ $genre }}</option> 
-                @endif            
-                @endforeach
+                @if(session()->has('genreList'))
+                    @foreach (session('genreList') as $key => $genre)
+                        @if (session('genre') == $genre)
+                        <option value="{{ $genre }}" selected>{{ $genre }}</option>
+                        @else
+                        <option value="{{ $genre }}">{{ $genre }}</option> 
+                        @endif            
+                    @endforeach
+                @endif
             </select>
             <a class="home-click" href="{{ route('item.list') }}">商品一覧</a>
             <a class="home-click" href="{{ route('cart.index') }}">🛒</a>

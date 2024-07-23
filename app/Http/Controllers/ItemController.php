@@ -13,13 +13,12 @@ class ItemController extends Controller
 {
     // アイテムの一覧を表示
     public function list(){
-        $reviews = Review::All();
         // $items = Item::leftJoin('reviews', 'items.id', '=', 'reviews.item_id')
         // ->select('items.*', 'reviews.star')
         // ->orderBy('items.id')
         // ->get();
         $items = Item::with('reviews')->orderBy('id')->get();
-        return view('item.list',['items'=>$items,'reviews'=>$reviews]);
+        return view('item.list',['items'=>$items]);
     }
 
     // アイテムの詳細を表示
@@ -27,7 +26,11 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         // $reviews = Review::where('item_id',$id)->orderBy('id','desc')->get();
         $user = session('user');
-        $userId = $user[0]->id;
+        if($user != null){
+            $userId = $user[0]->id;
+        }else{
+            $userId = 0;
+        }
         $reviews = Review::select('reviews.*', 
         DB::raw('CASE WHEN rt.totalcount IS NULL THEN 0 ELSE rt.totalcount END AS totalCount'), 
         'rg.user_id as rgUserId')
@@ -50,7 +53,8 @@ class ItemController extends Controller
     public function itemAdd(String $id, Request $request){
         $user = session('user');
         if($user == null){
-            return to_route('user.toLogin');
+            $redirectUrl = route('user.toLogin');
+            return response()->json(['redirect_url' => $redirectUrl]);
         }
         $item = Item::findOrFail($id);
         $cart = new Cart();
