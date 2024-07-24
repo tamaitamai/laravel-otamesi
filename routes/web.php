@@ -47,6 +47,8 @@ Route::post('/user/edit',[UserController::class,'edit'])->name('user.edit');
 Route::get('history/list',[HistoryController::class,'list'])->name('history.list');
 
 // 注文
-Route::get('order/confirm',[OrderController::class,'confirm'])->name('order.confirm');
+Route::get('/order/confirm',[OrderController::class,'confirm'])->name('order.confirm');
 Route::post('/order/payment',[OrderController::class,'payment'])->name('order.payment');
 Route::get('/order/buy',function(){return view('order.payment');});
+Route::get('/order/delivery/{historyId}',[OrderController::class,'delivery'])->name('order.delivery');
+Route::get('/order/detail/{historyId}',[OrderController::class,'detail'])->name('order.detail');

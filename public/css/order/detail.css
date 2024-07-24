@@ -1,8 +1,16 @@
-.history-area{
+.order-detail-box{
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0px;
+    width: 80%;
+    border: 1px solid rgb(180, 175, 175);
+    border-radius: 10px;
 }
+.order-detail-top-box,.order-detail-bottom-box{
+    margin: 10px 20px;
+    font-size: 20px;
+}
+/* 商品詳細 */
 .history-box{
     display: flex;
     flex-direction: column;
@@ -11,22 +19,8 @@
     border-radius: 10px;
     width: 80%;
 }
-/* 履歴上側 */
+/* 商品詳細上側 */
 .history-top-box{
-    display: flex;
-    padding: 10px 0px;
-    background-color: rgb(242, 237, 237);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.history-top-left-box{
-    margin-left: 30px;
-}
-.history-name{
-    margin: 10px 0px 0px 20px;
-}
-/* 履歴真ん中 */
-.history-middle-box{
     display: flex;
     justify-content: space-between;
 }
@@ -37,7 +31,7 @@
 .history-delivery-check{
     margin: 10px 20px 0px 0px;
 }
-/* 履歴下側 */
+/* 商品詳細下側 */
 .history-top-right-box{
     margin-left: 20px;
 }

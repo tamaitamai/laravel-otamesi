@@ -1,0 +1,34 @@
+.delivery-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delivery-box{
+    width: 70%;
+}
+/* 注文商品 */
+.delivery-top-box{
+    border-bottom: 3px solid rgb(180, 175, 175);
+    margin-top: 30px;
+}
+.delivery-image{
+    width: 200px;
+    height: 120px;
+    margin: 10px 0px;
+}
+/* 注文商品詳細 */
+.delivery-bottom-box{
+    display: flex;
+    margin-top: 50px;
+}
+.address-box, .detail-box{
+    border: 5px solid rgb(180, 175, 175);
+    padding: 20px;
+    width: 30%;
+}
+.address-box{
+    
+}
+.detail-box{
+    margin-left: 30px;
+}

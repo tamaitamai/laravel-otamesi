@@ -32,6 +32,7 @@ class OrderController extends Controller
             $history->image = $cart->image;
             $history->price = $cart->price;
             $history->count = $cart->count;
+            $history->cart_id = $cart->id;
             $history->save();
             $cart->delete();
 
@@ -42,5 +43,23 @@ class OrderController extends Controller
             $order->save();
         }
         return view('order.payment');
-    }    
+    }
+
+    // 配送状況の確認
+    public function delivery(String $historyId){
+        $history = History::leftjoin('orders','histories.cart_id','=','orders.cart_id')
+        ->select('histories.*','orders.order_date')
+        ->where('histories.id',$historyId)
+        ->orderBy('histories.id','desc')->get();
+        return view('order.delivery',['history' => $history[0]]);
+    }
+
+    // 注文詳細の確認
+    public function detail(String $historyId){
+        $history = History::leftjoin('orders','histories.cart_id','=','orders.cart_id')
+        ->select('histories.*','orders.order_date')
+        ->where('histories.id',$historyId)
+        ->orderBy('histories.id','desc')->get();
+        return view('order.detail',['history'=>$history[0]]);
+    }
 }
