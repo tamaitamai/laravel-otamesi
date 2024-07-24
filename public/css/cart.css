@@ -1,16 +1,29 @@
-.cart-area{
+.cart-main{
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
 }
-.cart-list{
+.cart-area{
     display: flex;
     flex-direction: column;
     width: 80%;
+}
+/* カート一覧 */
+.cart-title{
+    margin-left: 20px;
+}
+.cart-empty{
+    margin: 10px 20px;
+    font-size: 20px;
+}
+.cart-list{
+    border: 1px solid rgb(180, 175, 175);
+    width: 95%;
 }
 .cart-box{
     display: flex;
     border-top: 1px solid rgb(180, 175, 175);
     width: 95%;
+    margin-left: 20px;
 }
 .cart-image{
     width: 200px;
@@ -22,6 +35,53 @@
     flex-direction: column;
     width: 100%;
 }
+/* あとにで買うで選択した一覧 */
+.cart-after-area{
+    margin-top: 50px;
+    border: 1px solid rgb(180, 175, 175);
+    width: 95%;
+}
+.cart-after-title{
+    margin-left: 20px;
+}
+.cart-after-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart-after-box{ 
+    display: flex;
+    flex-direction: column;    
+    margin-top: 50px;
+    width: 20%;
+    height: 300px;
+    border: 1px solid rgb(180, 175, 175);
+    margin: 10px 20px;
+}
+.cart-after-image-box{
+    display: flex;
+    justify-content: center;
+}
+.cart-after-image{
+    width: 80%;
+    padding: 10px 0px;
+}
+.cart-after-info-box{
+    margin-left: 20px;
+}
+.cart-return-btn-box{
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+.cart-return-btn{
+    font-size: 20px;
+    width: 90%;
+    border-radius: 50px;
+    background-color: orange;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
+}
+/* カート詳細の上側 */
 .cart-top-box{
     display: flex;
     justify-content: space-between;
@@ -34,6 +94,7 @@
     font-size: 25px;
     margin: 20px 50px 0px 0px;
 }
+/* カート詳細の下側 */
 .cart-bottom-box{
     margin-top: auto;
     display: flex;
@@ -54,6 +115,15 @@
 .cart-delete-btn:hover{
     color: red;
 }
+.cart-after-btn{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.cart-after-btn:hover{
+    text-decoration: underline;
+}
+/* 金額詳細 */
 .cart-price-box{
     display: flex;
     flex-direction: column;

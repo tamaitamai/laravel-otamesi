@@ -64,6 +64,7 @@ class ItemController extends Controller
         $cart->name=$item->name;
         $cart->price=$item->price;
         $cart->count=$request->count;
+        $cart->after_flg=0;
         $cart->save();
         return to_route('item.list');
     }

@@ -18,7 +18,8 @@ class CartController extends Controller
         if($user==null){
             return view('user.login');
         }
-        $carts = Cart::where('user_id',$user[0]->id)->get();
+        $carts = Cart::where('user_id',$user[0]->id)->where('after_flg',0)->get();
+        $cartsByAfter = Cart::where('user_id',$user[0]->id)->where('after_flg',1)->get();
         $totalPrice=0;
         $totalCount=0;
         foreach($carts as $cart){
@@ -27,8 +28,9 @@ class CartController extends Controller
         }
         session(['totalPrice'=>$totalPrice,'totalCount'=>$totalCount]);
         return view('cart.cartList',['carts' => $carts
-                                    ,'totalPrice'=>$totalPrice
-                                    ,'totalCount'=>$totalCount]);
+                                    ,'cartsByAfter' => $cartsByAfter
+                                    ,'totalPrice' => $totalPrice
+                                    ,'totalCount' => $totalCount]);
     }
 
     // カートの商品数を変更
@@ -49,4 +51,21 @@ class CartController extends Controller
         return to_route('cart.index');
     }
 
+    // あとで買う一覧に移動
+    public function after(String $cartId){
+        $cart = Cart::findOrFail($cartId);
+        $cart->update([
+            'after_flg' => 1,
+        ]);
+        return to_route('cart.index');
+    }
+
+    // カートに戻す
+    public function return(String $cartId){
+        $cart = Cart::findOrFail($cartId);
+        $cart->update([
+            'after_flg' => 0,
+        ]);
+        return to_route('cart.index');
+    }
 }

@@ -16,14 +16,14 @@ class OrderController extends Controller
         $user = session('user')[0];
         $totalPrice = session('totalPrice');
         $totalCount = session('totalCount');
-        $carts = Cart::where('user_id',$user->id)->get();
+        $carts = Cart::where('user_id',$user->id)->where('after_flg',0)->get();
         return view('order.confirm',['carts'=>$carts,'totalPrice'=>$totalPrice,'totalCount'=>$totalCount]);
     }
 
     // カートの商品を購入
     public function payment(Request $request){
         $user = session('user');
-        $carts = Cart::where('user_id',$user[0]->id)->get();
+        $carts = Cart::where('user_id',$user[0]->id)->where('after_flg',0)->get();
         foreach($carts as $cart){
             $history = new History();
             $history->user_id = $user[0]->id;

@@ -33,6 +33,8 @@ Route::get('/reviewGood',[ReviewController::class,'reviewGood'])->name('review.g
 Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cart/update/{cart}',[CartController::class,'update'])->name('cart.update');
+Route::get('/cart/after/{cartId}',[CartController::class,'after'])->name('cart.after');
+Route::get('/cart/return/{cartId}',[CartController::class,'return'])->name('cart.return');
 
 // ユーザー
 Route::get('/toLogin',function(){return view('user.login');})->name('user.toLogin');
