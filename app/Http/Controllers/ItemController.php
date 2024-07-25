@@ -17,6 +17,9 @@ class ItemController extends Controller
         // ->select('items.*', 'reviews.star')
         // ->orderBy('items.id')
         // ->get();
+        /** @var \Illuminate\Session\Session $session */
+        $session = session();
+        $session->forget('searchItems');
         $items = Item::with('reviews')->orderBy('id')->get();
         return view('item.list',['items'=>$items]);
     }
@@ -83,7 +86,7 @@ class ItemController extends Controller
     public function itemSearch(Request $request){
         $searchItems = Item::where('name', 'LIKE' ,'%'.$request->search.'%')->get();
         session(['searchItems' => $searchItems]);
-        $redirectUrl = route('item.list');
+        $redirectUrl = route('item.view');
         return response()->json(['redirect_url' => $redirectUrl]);
     }
 
@@ -94,7 +97,7 @@ class ItemController extends Controller
             $items = Item::where('genre',$request->genre)->get();
         }
         session(['searchItems' => $items,'genre' => $request->genre]);
-        $redirectUrl = route('item.list');
+        $redirectUrl = route('item.view');
         return response()->json(['redirect_url' => $redirectUrl]);
     }
 }

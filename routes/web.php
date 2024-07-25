@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\StorePreviousUrl;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -16,6 +17,7 @@ Route::get('/',function(){return view('home');})->name('home');
 Route::get('/hello', [ItemController::class, 'otamesi']);
 
 // アイテム
+Route::get('/item/view',function() {return view('item.list');})->name('item.view');
 Route::get('/item/list', [ItemController::class, 'list'])->name('item.list');
 Route::get('/item/detail/{item}',[ItemController::class,'detail'])->name('item.detail');
 Route::get('/item/add/{item}',[ItemController::class,'itemAdd'])->name('item.add');
@@ -30,7 +32,7 @@ Route::post('/reviewEdit',[ReviewController::class,'reviewEdit'])->name('review.
 Route::get('/reviewGood',[ReviewController::class,'reviewGood'])->name('review.good');
 
 // カート
-Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
+Route::get('/cart/index',[CartController::class,'index'])->name('cart.index')->middleware(StorePreviousUrl::class);
 Route::delete('/cart/destroy/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cart/update/{cart}',[CartController::class,'update'])->name('cart.update');
 Route::get('/cart/after/{cartId}',[CartController::class,'after'])->name('cart.after');
@@ -46,7 +48,7 @@ Route::get('/user/toEdit',function(){return view('user.edit');})->name('user.toE
 Route::post('/user/edit',[UserController::class,'edit'])->name('user.edit');
 
 //商品購入履歴
-Route::get('history/list',[HistoryController::class,'list'])->name('history.list');
+Route::get('history/list',[HistoryController::class,'list'])->name('history.list')->middleware(StorePreviousUrl::class);
 
 // 注文
 Route::get('/order/confirm',[OrderController::class,'confirm'])->name('order.confirm');
