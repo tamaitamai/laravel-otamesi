@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Favorite;
 use App\Models\Item;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -27,13 +28,13 @@ class ItemController extends Controller
     // アイテムの詳細を表示
     public function detail(String $id){
         $item = Item::findOrFail($id);
-        // $reviews = Review::where('item_id',$id)->orderBy('id','desc')->get();
         $user = session('user');
         if($user != null){
             $userId = $user[0]->id;
         }else{
             $userId = 0;
         }
+        $favoriteExists = Favorite::where('user_id',$userId)->where('item_id',$id)->exists();
         $reviews = Review::select('reviews.*', 
         DB::raw('CASE WHEN rt.totalcount IS NULL THEN 0 ELSE rt.totalcount END AS totalCount'), 
         'rg.user_id as rgUserId')
@@ -49,7 +50,7 @@ class ItemController extends Controller
         ->where('reviews.item_id',$id)
         ->orderBy('reviews.id','desc')
         ->get();
-        return view('item.detail',['item'=>$item,'reviews'=>$reviews]);
+        return view('item.detail',['item'=>$item,'reviews'=>$reviews,'favoriteExists'=>$favoriteExists]);
     }
 
     // アイテムをカートに加える

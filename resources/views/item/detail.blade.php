@@ -10,8 +10,17 @@
     }
 @endphp
 <div class="item-area">
+    {{-- 商品情報 --}}
     <div class="item-box">
-        <img src="{{ asset('/storage/image/'.$item->image) }}" class="item-image">
+        <div class="item-image-box">
+            <img src="{{ asset('/storage/image/'.$item->image) }}" class="item-image">
+            <input type="hidden" class="item-id" value={{ $item->id }}>
+            @if($favoriteExists)
+                <div class="item-favorite favorite-exists">♥</div>
+            @else
+                <div class="item-favorite">♡</div>
+            @endif
+        </div>
         <div class="item-info-box">
             <div class="item-name">{{ $item->name }}</div>
             @if($reviews == '[]')
@@ -23,6 +32,7 @@
             <div>{{ $item->comment }}</div>
         </div>
     </div>
+    {{-- 価格情報 --}}
     <form action="{{ route('item.add',['item'=>$item->id]) }}" class="price-box">
         <div class="item-price">￥{{ $item->price }}</div>
         <div class="price-btn-box">
@@ -77,4 +87,5 @@
     </div>
 </div>
 <script src="/js/review.js"></script>
+<script src="/js/item/detail.js"></script>
 @endsection

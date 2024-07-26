@@ -30,6 +30,7 @@
             <a class="home-click" href="{{ route('item.list') }}">商品一覧</a>
             <a class="home-click" href="{{ route('cart.index') }}">🛒</a>
             <a class="home-click" href="{{ route('history.list') }}">🕐</a>
+            <a class="home-click" href="{{ route('favorite.list') }}">♡</a>
         </div>
         {{-- ユーザー情報 --}}
         @if(session()->has('user'))

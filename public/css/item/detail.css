@@ -7,9 +7,25 @@
     display: flex;
     width: 80%;
 }
+.item-image-box{
+    position: relative;
+}
 .item-image{
     width: 500px;
     height: 300px;
+}
+.item-favorite{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.favorite-exists{
+    color: red;
 }
 .item-info-box{
     margin-left: 50px;
@@ -17,6 +33,7 @@
 .item-price{
     font-size: 30px;
 }
+/* 価格情報 */
 .price-box{
     border: 1px solid rgb(180, 175, 175);
     width: 15%;
