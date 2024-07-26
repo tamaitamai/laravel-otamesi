@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',function(){return view('home');})->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/hello', [ItemController::class, 'otamesi']);
 
 // アイテム

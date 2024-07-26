@@ -1,32 +1,41 @@
+function rightMove(num){
+    for(let i=0;i<num;i++){
+        if($('.home-image').eq(i).is(':visible')){
+            $('.home-image').hide();
+            if(i+1 === num){
+                $('.home-image').eq(0).show();    
+            }else{
+                $('.home-image').eq(i+1).show();
+            }
+            break;
+        }
+    }
+}
+
 $(function(){
-    $.ajax({
-        url: '/item/genreList'
-    })
+    $('.home-image').eq(0).show();
+    var num = $('.home-image').length;
 
-    $('.genre-box').change(function(){
-        postData = {
-            genre: $(this).val()
-        }
-        $.ajax({
-            url: '/item/genre',
-            data: postData,
-            success: function(response){
-                window.location.href = response.redirect_url;
-            }
-        })
-    })
+    setInterval(function(){
+        rightMove(num)
+    },10000);
 
-    $('.search-icon').click(function(){
-        var searchValue = $('.search-input').val();
-        const postData = {
-            search: searchValue
-        }
-        $.ajax({
-            url: '/item/search',
-            data: postData,
-            success: function(response){
-                window.location.href = response.redirect_url;
+    // ホーム画像を右側に遷移
+    $('.right-move').click(function(){
+        rightMove(num);
+    })
+    // ホーム画像を左側に遷移
+    $('.left-move').click(function(){
+        for(let i=0;i<num;i++){
+            if($('.home-image').eq(i).is(':visible')){
+                $('.home-image').hide();
+                if(i === 0){
+                    $('.home-image').eq(num-1).show();
+                }else{
+                    $('.home-image').eq(i-1).show();
+                }
+                break;
             }
-        })
+        }        
     })
 })

@@ -1,54 +1,47 @@
-header{
-    border: 1px solid black;
+/* ホーム画像 */
+.home-image-box{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    margin-top: 50px;
 }
-.home-box{
+.home-image{
+    width: 500px;
+    height: 400px;
+    display: none;
+}
+.left-move,.right-move{
+    font-size: 100px;
+    margin: 0px 20px; 
+}
+/* 商品ランキング */
+.rank-list{
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
 }
-.genre-box{
-    margin-left: 10px;
-    padding: 5px;
-    font-size: 20px;
-}
-.home-click{
-    margin-left: 10px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-}
-.home-click:hover{
-    color: blue;
-}
-/* 検索欄 */
-.search-box{
+.rank-box{
     display: flex;
-    align-items: center;
-    margin-left: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: orange;
-}
-.search-input{
-    font-size: 20px;
-    border: none;
-    border-right: 1px solid black;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    padding: 5px;
-}
-.search-icon{
-    padding: 0px 5px;
-    cursor: pointer;
-}
-/* ユーザー情報 */
-.login-box{
-    display: flex;
-    justify-content: end;
-    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    padding: 20px;
+    border: 1px solid rgb(180, 175, 175);
+    width: 20%;
+    padding: 10px 20px;
+    position: relative;
+}
+.rank-view{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: orange;
+    color: white;
+    padding: 5px;
+}
+.rank-image-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.rank-image{
+    width: 90%;
 }
