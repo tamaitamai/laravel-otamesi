@@ -1,0 +1,116 @@
+/* ポイント合計 */
+.total-point-area{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.total-point-list{
+    width: 80%;
+}
+.total-point-title{
+    background-color: rgb(221, 219, 219);
+    border: 1px solid rgb(180, 175, 175);
+    border-bottom: none;
+    width: 50%;
+    padding: 10px 20px;
+    margin-left: -20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.total-point-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid rgb(180, 175, 175);
+    padding: 20px;
+    margin-left: -20px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.total-point-view{
+    border: 1px solid rgb(180, 175, 175);
+    border-bottom: none;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    padding: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+/* 限定ポイント */
+.total-limit-point-view{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 10px 20px;
+    border: 1px solid rgb(180, 175, 175);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.normal-point-box,.limit-point-box{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.normal-point-box{
+    border-right: 1px solid rgb(180, 175, 175);
+    padding-right: 10px;
+}
+.limit-point-box{
+    padding-left: 10px;
+}
+/* ポイント一覧 */
+.point-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;    
+}
+.point-list{
+    border: 1px solid rgb(180, 175, 175);
+    padding: 20px;
+    width: 80%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.point-title{
+    background-color: rgb(221, 219, 219);
+    border: 1px solid rgb(180, 175, 175);
+    border-bottom: none;
+    width: 80%;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.point-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid rgb(180, 175, 175);
+}
+.point-info{
+    display: flex;
+}
+.point-info-second{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+.point-name{
+    margin: 0px 50px;
+}
+.use-point,.get-point{
+    text-align: center;
+    width: 150px;
+}
+.use-point{
+    background-color: rgb(156, 152, 152);
+    color: white;
+}
+.get-point{
+    background-color: rgb(221, 219, 219);
+}

@@ -44,26 +44,25 @@ class OrderController extends Controller
             $orderDate = 'order_date'.$cart->id;
             $order->order_date = $request->$orderDate;
             $order->save();
-        }
-        $point = new Point();
-        $point->user_id = $user[0]->id;
-        $totalPrice = session('totalPrice');
-        $point->point = $totalPrice/100;
-        $point->save();
 
-        $usePoint = new usePoint();
-        $usePoint->user_id = $user[0]->id;
-        $usePoint->point = $request->point;
-        $today = new DateTime();
-        $usePoint->use_date = $today;
-        $usePoint->save();
+            $point = new Point();
+            $point->user_id = $user[0]->id;
+            $point->point = $cart->price/100;
+            $point->item_id = $cart->item_id;
+            $point->save();
+        }
+
+        if($request->point > 0){
+            $usePoint = new Point();
+            $usePoint->user_id = $user[0]->id;
+            $usePoint->point = $request->point * -1;
+            $usePoint->save();
+        }
         
         $totalPoint = Point::selectRaw('SUM(point) as total_point')
         ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
-        $useTotalPoint = usePoint::selectRaw('SUM(point) as total_point')
-        ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
         if($totalPoint != ''){
-            session(['totalPoint' => $totalPoint->total_point - $useTotalPoint->total_point]);
+            session(['totalPoint' => $totalPoint->total_point]);
         }
         return view('order.payment');
     }

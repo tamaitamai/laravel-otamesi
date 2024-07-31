@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('point');
+            $table->integer('item_id')->nullable();
             $table->timestamps();
         });
     }

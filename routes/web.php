@@ -6,6 +6,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PointController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\StorePreviousUrl;
@@ -64,3 +65,6 @@ Route::get('/order/detail/{historyId}',[OrderController::class,'detail'])->name(
 Route::get('/favorite/list',[FavoriteController::class,'list'])->name('favorite.list')->middleware(StorePreviousUrl::class);
 Route::get('/favorite/add',[FavoriteController::class,'add'])->name('favorite.add');
 Route::post('/favorite/genre',[FavoriteController::class,'genre'])->name('favorite.genre');
+
+// ポイント
+Route::get('/point/list',[PointController::class,'list'])->name('point.list');

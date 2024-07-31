@@ -42,9 +42,9 @@
                         <div class="user-info-title">アカウントサービス</div>
                         <a href="{{ route('user.toEdit') }}" class="user-info-edit">ユーザー情報修正</a>
                         @if(session()->has('totalPoint'))
-                        <div>{{ session('totalPoint') }}ポイント</div>
+                        <a href="{{ route('point.list') }}">{{ session('totalPoint') }}ポイント</a>
                         @else
-                        <div>0ポイント</div>
+                        <a href="{{ route('point.list') }}">0ポイント</a>
                         @endif
                     </div>
                 </div>

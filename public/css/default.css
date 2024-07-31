@@ -57,6 +57,8 @@ header{
     width: 100%;
 }
 .user-info-box{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 0px;
     right: 0px;

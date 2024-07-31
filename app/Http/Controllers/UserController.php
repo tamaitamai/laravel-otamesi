@@ -17,10 +17,10 @@ class UserController extends Controller
         $user = User::where('mail',$request->mail)->where('password',$request->password)->get();
         $totalPoint = Point::selectRaw('SUM(point) as total_point')
         ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
-        $useTotalPoint = usePoint::selectRaw('SUM(point) as total_point')
-        ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
+        // $useTotalPoint = usePoint::selectRaw('SUM(point) as total_point')
+        // ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
         if($totalPoint != ''){
-            session(['totalPoint' => $totalPoint->total_point - $useTotalPoint->total_point]);
+            session(['totalPoint' => $totalPoint->total_point]);
         }
         if($user != '[]'){
             session(['user' => $user]);
