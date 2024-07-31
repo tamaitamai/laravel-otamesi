@@ -1,0 +1,25 @@
+/* 商品をカートに入れたときに表示するモーダル */
+.item-add-view{
+    display: none;
+}
+.item-add-area,.item-add-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.item-add-area{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.item-add-box{
+    height: 50%;
+    width: 30%;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+}

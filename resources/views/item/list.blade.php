@@ -9,7 +9,7 @@
 @endphp
 <div class="item-list">
 @foreach ($items as $item)
-<form action="{{ route('item.add',['item'=>$item->id]) }}" class="item-box">
+<form action="{{ route('item.add',['item'=>$item->id]) }}" class="item-box cart-add-box">
     <div class="item-image-area">
         <img src="{{ asset('/storage/image/'.$item->image) }}" class="item-image">    
     </div>
@@ -29,13 +29,6 @@
 </form>
 @endforeach
 </div>
-<div class="item-add-view">
-    <div class="item-add-area">
-        <div class="item-add-box">
-            <h2>カートに商品を入れました</h2>
-            <button class="close-btn">買い物を続ける</button>
-        </div>    
-    </div>    
-</div>
-<script src="/js/item/list.js"></script>
+{{-- カート追加表示モーダル --}}
+@include('modal.cartAdd')
 @endsection

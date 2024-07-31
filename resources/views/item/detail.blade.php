@@ -33,7 +33,7 @@
         </div>
     </div>
     {{-- 価格情報 --}}
-    <form action="{{ route('item.add',['item'=>$item->id]) }}" class="price-box">
+    <form action="{{ route('item.add',['item'=>$item->id]) }}" class="price-box cart-add-box">
         <div class="item-price">￥{{ $item->price }}</div>
         <div class="price-btn-box">
             <select name="count" class="item-count">
@@ -45,6 +45,8 @@
         </div>
     </form>
 </div>
+{{-- カート追加表示モーダル --}}
+@include('modal.cartAdd')
 <div class="review-area">
     {{-- レビューの平均を表示 --}}
     <div>

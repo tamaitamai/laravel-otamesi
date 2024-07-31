@@ -1,6 +1,6 @@
 $(function(){
-    // $('.item-add-area').hide();
-    $('.item-box').submit(function(event){
+    // アイテムをカートに追加
+    $('.cart-add-box').submit(function(event){
         event.preventDefault(); // デフォルトのフォーム送信を防ぐ
 
         $.ajax({
