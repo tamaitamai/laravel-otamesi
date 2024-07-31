@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InsertUserRequest;
 use App\Http\Requests\LoginUserRequest;
+use App\Models\Point;
+use App\Models\usePoint;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +15,13 @@ class UserController extends Controller
     public function login(LoginUserRequest $request){
         $url = session('url');
         $user = User::where('mail',$request->mail)->where('password',$request->password)->get();
+        $totalPoint = Point::selectRaw('SUM(point) as total_point')
+        ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
+        $useTotalPoint = usePoint::selectRaw('SUM(point) as total_point')
+        ->groupBy('user_id')->where('user_id',$user[0]->id)->first();
+        if($totalPoint != ''){
+            session(['totalPoint' => $totalPoint->total_point - $useTotalPoint->total_point]);
+        }
         if($user != '[]'){
             session(['user' => $user]);
         }else{

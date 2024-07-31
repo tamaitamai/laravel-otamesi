@@ -52,4 +52,21 @@ $(function(){
         $('.delivery-date-text').eq(num).text(selectDateValue);
         $('.select-date-area').hide();
     })
+
+    // ポイント利用後の金額
+    var totalPrice = parseInt($('.cart-total-value').val());
+    var usePoint = parseInt($('.cart-point-value').val());
+    if(usePoint > totalPrice){
+        console.log('pointAll');
+        $('.cart-point-value').val(totalPrice);
+        usePoint = $('.cart-point-value').val();
+    }
+    $('.result-price').text(totalPrice-usePoint);
+
+    $('.cart-point-value').change(function(){
+        if(parseInt($(this).val()) > usePoint || parseInt($(this).val()) > totalPrice){
+            $(this).val(usePoint);
+        }
+        $('.result-price').text(totalPrice-$(this).val());
+    })
 })

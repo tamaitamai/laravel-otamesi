@@ -1,5 +1,6 @@
 @extends('layout.default')
 <link rel="stylesheet" href="/css/user.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @section('content')
 <div class="user-area">
     <form action="{{ Route('user.insert') }}" method="post" class="user-box">
@@ -35,4 +36,5 @@
         <button class="user-btn">新規登録</button>
     </form>
 </div>
+<script src="/js/form.js"></script>
 @endsection

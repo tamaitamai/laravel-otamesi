@@ -3,6 +3,7 @@ $(function(){
         url: '/item/genreList'
     })
 
+    // ジャンルを変更したときの処理
     $('.genre-box').change(function(){
         postData = {
             genre: $(this).val()
@@ -16,6 +17,7 @@ $(function(){
         })
     })
 
+    // 商品検索をしたときの処理
     $('.search-icon').click(function(){
         var searchValue = $('.search-input').val();
         const postData = {
@@ -28,5 +30,16 @@ $(function(){
                 window.location.href = response.redirect_url;
             }
         })
+    })
+
+    $(document).ready(function(){
+        $('.user-info-main').hover(
+            function(){
+                $('.user-info-area').show();
+            },
+            function(){
+                $('.user-info-area').hide();
+            }
+        )   
     })
 })

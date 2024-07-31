@@ -1,5 +1,6 @@
 @extends('layout.default')
 <link rel="stylesheet" href="/css/user.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @section('content')
 <div class="user-area">
     @if(session()->has('noUser'))
@@ -24,4 +25,5 @@
         <button class="user-btn">ログイン</button>
     </form>
 </div>
+<script src="/js/form.js"></script>
 @endsection

@@ -52,3 +52,16 @@ header{
     flex-direction: column;
     padding: 20px;
 }
+.user-info-area{
+    position: relative;
+    width: 100%;
+}
+.user-info-box{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+}

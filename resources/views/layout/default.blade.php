@@ -35,7 +35,20 @@
         {{-- ユーザー情報 --}}
         @if(session()->has('user'))
         <div class="login-box">
-            <a href="{{ Route('user.toEdit') }}" class="home-click">{{ session('user')[0]->name }}さんこんにちは</a>
+            <div class="user-info-main">                
+                <div class="home-click user-info">{{ session('user')[0]->name }}さんこんにちは</div>
+                <div style="display: none" class="user-info-area">
+                    <div class="user-info-box">
+                        <div class="user-info-title">アカウントサービス</div>
+                        <a href="{{ route('user.toEdit') }}" class="user-info-edit">ユーザー情報修正</a>
+                        @if(session()->has('totalPoint'))
+                        <div>{{ session('totalPoint') }}ポイント</div>
+                        @else
+                        <div>0ポイント</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
             <a href="{{ Route('user.logOut') }}" class="home-click">ログアウト</a>
         </div>
         @else

@@ -75,6 +75,8 @@
     <form class="cart-price-box" action="{{ route('order.confirm') }}">
         <div class="cart-total-title">小計({{ $totalCount }}個の商品)</div>
         <div class="cart-total-price">￥{{ $totalPrice }}</div>
+        <div>{{ $totalPrice/100 }}ポイント獲得予定</div>
+        <div>{{ session('totalPoint') }}ポイント利用可能</div>
         <div class="cart-buy-btn-area">
             <button class="cart-buy-btn">注文確認</button>
             {{-- <a href="{{ route('order.confirm') }}">注文確認</a> --}}

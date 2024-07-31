@@ -63,6 +63,16 @@
     background-color: orange;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);    
 }
+.cart-point-box{
+    display: flex;
+}
+.cart-point-value{
+    width: 100px;
+}
+.cart-get-point{
+    border-top: 1px solid rgb(180, 175, 175);
+    padding-top: 10px;
+}
 /* 日付選択モーダル */
 .select-date-area{
     position: fixed;

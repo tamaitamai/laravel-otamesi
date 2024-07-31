@@ -46,6 +46,13 @@
     <div class="cart-price-box">
         <div class="cart-total-title">小計({{ $totalCount }}個の商品)</div>
         <div class="cart-total-price">￥{{ $totalPrice }}</div>
+        <div class="cart-point-box">
+            <div>利用ポイント：</div>
+            <input type="hidden" class="cart-total-value" value="{{ $totalPrice }}">
+            <input type="text" name="point" class="cart-point-value" value="{{ session('totalPoint') }}">
+        </div>
+        <div>支払い額：￥<span class="result-price"></span></div>
+        <div class="cart-get-point">獲得ポイント：{{ $totalPrice/100 }}</div>
         <div class="cart-buy-btn-area">
             <button class="cart-buy-btn">購入確定</button>
         </div>
@@ -61,4 +68,5 @@
     </div>
 </div>
 <script src="/js/order/confirm.js"></script>
+<script src="/js/form.js"></script>
 @endsection
